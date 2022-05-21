@@ -74,15 +74,17 @@ jobs:
           pages_branch: gh-pages
           target_branch: main
         run: |
+          OWNER_NAME=$(cut -d '/' -f 1 <<< "$GITHUB_REPOSITORY")
+          REPO_NAME=$(cut -d '/' -f 2 <<< "$GITHUB_REPOSITORY")
           git checkout ${{ env.target_branch }}
           cp -v README.md ..
           cd ${GITHUB_WORKSPACE}/..
-          helm --debug package benthos-helm-chart
-          cd benthos-helm-chart
+          helm --debug package ${REPO_NAME}
+          cd ${REPO_NAME}
           git checkout ${{ env.pages_branch }}
           mv -v ../README.md .
           mv -v ../benthos-*.tgz .
-          helm --debug repo index . --url https://benthosdev.github.io/benthos-helm-chart/
+          helm --debug repo index . --url https://${OWNER_NAME}.github.io/${REPO_NAME}
           git add .
           git commit -m "bump chart version to ${{ needs.tag_release.outputs.chart_tag }}"
           git push origin ${{ env.pages_branch }}
