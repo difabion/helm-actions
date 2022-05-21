@@ -83,7 +83,7 @@ jobs:
           cd ${REPO_NAME}
           git checkout ${{ env.pages_branch }}
           mv -v ../README.md .
-          mv -v ../benthos-*.tgz .
+          mv -v ../*.tgz .
           helm --debug repo index . --url https://${OWNER_NAME}.github.io/${REPO_NAME}
           git add .
           git commit -m "bump chart version to ${{ needs.tag_release.outputs.chart_tag }}"
