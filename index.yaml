@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  helm-actions:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-05-21T23:58:24.055974317Z"
+    description: A Helm chart for Kubernetes
+    digest: 14e8d269e08c381daeb8dc072170622c51b6ba090769c9a7bc4ca62ee5ec739b
+    name: helm-actions
+    type: application
+    urls:
+    - https://difabion.github.io/helm-actions/helm-actions-0.1.5.tgz
+    version: 0.1.5
+generated: "2022-05-21T23:58:24.054893704Z"
